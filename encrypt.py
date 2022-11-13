@@ -1,6 +1,7 @@
 import os
 from cryptography.fernet import Fernet
-
+import passkey
+import decrypt
 key = Fernet.generate_key()
 # Create file to store generated key ?
 dpath = "./files"
@@ -15,6 +16,10 @@ for file in os.listdir():
         # Encrypt file
         encrypted = key.encrypt(orig)
         # Copy file into subdirectory ./output
-        op = f"{dpath}/output"
+        op = f"{dpath}/output/{file}"
         with open(op,'wb') as f:
+            if not os.path.exists(op):
+                os.makedirs(op)
             f.write(encrypted)
+if(passkey.check() == True):
+    decrypt.decryptfile()
