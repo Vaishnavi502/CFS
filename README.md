@@ -11,4 +11,5 @@ Steps:
 
 -> entire directory is encrypted with symmetric encryption
 -> clients know public key (RSA)
+
 Packages: cryptography (Fernet), os
