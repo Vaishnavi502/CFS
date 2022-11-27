@@ -1,4 +1,5 @@
-import encrypt,encrypt2
+import encrypt
+import encrypt2
 import os
 
 dirpath = f"{os.getcwd()}"
