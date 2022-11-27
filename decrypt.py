@@ -12,7 +12,9 @@ for file in os.listdir():
         with open(dpath,'rb') as f:
             encrypted=f.read()
         print(f'\nContent of {file} is:')
+        # Decrypt file using RSA algorithm first
         decrypted2=encrypt2.re_decrypt(encrypted)
+        # Decrypt file using symmetric algorithm next
         decrypted=dkey.decrypt(decrypted2)
         st=decrypted.decode('utf8')
         print(st)
