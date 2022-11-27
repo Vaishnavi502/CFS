@@ -1,10 +1,10 @@
 import os
 from cryptography.fernet import Fernet
-import passkey
-import decrypt
+# import passkey
+# import decrypt
 key = Fernet.generate_key()
 # Create file to store generated key ?
-dpath = "./files"
+dpath = "/workspaces/CFS/files"
 os.chdir(dpath)
 
 key = Fernet(key)
@@ -21,5 +21,3 @@ for file in os.listdir():
             if not os.path.exists(op):
                 os.makedirs(op)
             f.write(encrypted)
-if(passkey.check() == True):
-    decrypt.decryptfile()
