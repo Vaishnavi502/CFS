@@ -17,7 +17,7 @@ for file in os.listdir():
         encrypted = key.encrypt(orig)
         # Copy file into subdirectory ./output
         op = f"{dpath}/output/{file}"
-        with open(op,'wb') as f:
-            if not os.path.exists(op):
+        if not os.path.exists(op):
                 os.makedirs(op)
+        with open(op,'wb') as f:
             f.write(encrypted)
