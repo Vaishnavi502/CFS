@@ -15,5 +15,9 @@ def gen_keys():
     # Broadcast RSA public key
     with open(key_pub_file,'r') as fin:
         print(fin.read())
-
-def check(key):
+pwd = "S_V$035"
+def check():
+    pkey=input(str("Enter password: "))
+    if(pwd == pkey):
+        return 1
+    return 0
