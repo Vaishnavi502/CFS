@@ -2,8 +2,12 @@ import os
 from cryptography.fernet import Fernet
 import encrypt2
 
+<<<<<<< HEAD
 # Create file to store generated key ?
 dirpath = f"{os.getcwd()}/files"
+=======
+dirpath = "/workspaces/CFS/files"
+>>>>>>> 900d484 (Symmetric then RSA encryption of all text files)
 os.chdir(dirpath)
 origkey = Fernet.generate_key()
 
@@ -14,7 +18,7 @@ for file in os.listdir():
         fpath = f"{dirpath}/{file}"
         with open(fpath, 'rb') as f:
             orig = f.read()
-        # Encrypt file
+        # Encrypt file with symmetric then RSA algorithm
         encrypted = key.encrypt(orig)
         encrypted2 = encrypt2.re_encrypt(encrypted)
         # Copy file into subdirectory ./output
