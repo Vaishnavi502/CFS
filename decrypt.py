@@ -1,7 +1,7 @@
 import encrypt,encrypt2
 import os
 
-dirpath = "/workspaces/CFS/files"
+dirpath = f"{os.getcwd()}"
 os.chdir(dirpath)
 
 dkey=encrypt.genkey()

@@ -4,7 +4,7 @@ import os
 from Crypto.PublicKey import RSA
 from Crypto import Random
 from Crypto.Cipher import PKCS1_OAEP
-dirpath = "/workspaces/CFS/files"
+dirpath = f"{os.getcwd()}"
 os.chdir(dirpath)
 DEFAULT_KEY_FILE=f"{dirpath}/mykey.pem"
 DEFAULT_PUB_FILE=f"{dirpath}/mykey.pem.pub"
@@ -17,21 +17,21 @@ def gen_keys():
     random_gen=Random.new().read
     key=RSA.generate(RSA_KEY_SIZE,random_gen)
     # Extract public key
-    publickey=key.public_key()
+    pk=key.publickey()
     with open(key_file,'wb') as f:
-        f.write(key.export_key('PEM'))
+        f.write(key.exportKey('PEM'))
     with open(key_pub_file,'wb') as pubf:
-        pubf.write(publickey.export_key())
+        pubf.write(pk.exportKey())
 
 def re_encrypt(f):
     # Re-encrypt encrypted file using public key
-    publickey=RSA.import_key(open(DEFAULT_PUB_FILE,'rb').read())
-    encryptor=PKCS1_OAEP.new(publickey)
+    pk=RSA.importKey(open(DEFAULT_PUB_FILE,'rb').read())
+    encryptor=PKCS1_OAEP.new(pk)
     encrypted=encryptor.encrypt(bytes(f))
     return encrypted
 
 def re_decrypt(encrypted):
-    keypair=RSA.import_key(open(DEFAULT_KEY_FILE,'rb').read())
+    keypair=RSA.importKey(open(DEFAULT_KEY_FILE,'rb').read())
     decryptor=PKCS1_OAEP.new(keypair)
     decrypted=decryptor.decrypt(encrypted)
     return decrypted

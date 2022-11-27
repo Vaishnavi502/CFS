@@ -1,10 +1,9 @@
 import os
 from cryptography.fernet import Fernet
 import encrypt2
-# import decrypt
 
 # Create file to store generated key ?
-dirpath = "/workspaces/CFS/files"
+dirpath = f"{os.getcwd()}/files"
 os.chdir(dirpath)
 origkey = Fernet.generate_key()
 
@@ -23,6 +22,7 @@ for file in os.listdir():
         if not os.path.exists(op):
             os.makedirs(op)
         opfile = f"{op}/{file}"
+        print(os.path.dirname(opfile))
         with open(opfile,'wb') as f:
             f.write(encrypted2)
 
