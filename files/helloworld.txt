@@ -1,0 +1,4 @@
+Hello world
+This is file 1
+This contains passwords and other
+sensitive info, so encrypting it is required.
