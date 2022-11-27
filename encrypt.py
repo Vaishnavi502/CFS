@@ -21,7 +21,6 @@ for file in os.listdir():
         if not os.path.exists(op):
             os.makedirs(op)
         opfile = f"{op}/{file}"
-        print(os.path.dirname(opfile))
         with open(opfile,'wb') as f:
             f.write(encrypted2)
 
