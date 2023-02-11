@@ -9,12 +9,10 @@ Steps:
 5. Client - tries to access ./files and will need to provide pass key (password protection)
 6. If pass key matches, decrypt entire directory
 
-<<<<<<< HEAD
 -> entire directory is encrypted with symmetric encryption
 -> clients know public key (RSA)
 
-Packages: cryptography (Fernet), os
-=======
+## Packages: cryptography (Fernet), os
 -> entire directory is 2-level encryption: symmetric then RSA encryption
 -> clients know public key (RSA) that's used for encryption; private key decryption done
 Packages: cryptography (Fernet), os
